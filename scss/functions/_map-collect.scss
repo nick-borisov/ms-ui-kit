@@ -1,0 +1,10 @@
+// Allow to merge unlimited count of $maps
+
+@function map-collect($maps...) {
+  $collection: ();
+
+  @each $map in $maps {
+    $collection: map-merge($collection, $map);
+  }
+  @return $collection;
+}

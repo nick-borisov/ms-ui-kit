@@ -1,0 +1,5 @@
+@mixin set-styles($features) {
+  @each $style, $val in $features {
+    #{$style}: $val;
+  }
+}
