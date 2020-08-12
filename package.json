@@ -1,0 +1,39 @@
+{
+  "name": "mindstudios-web-ui-kit",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "authors": {
+    "name": "",
+    "email": ""
+  },
+  "repository": "",
+  "scripts": {
+    "build": "npm-run-all build:*",
+    "build:css": "npm-run-all lint:css css:compile css:prefix css:minify",
+    "css:compile": "node-sass --output-style expanded --source-map true --source-map-contents true --precision 6 scss/ -o dist/css/",
+    "css:minify": "cleancss --level 1 --format breakWith=lf --source-map --source-map-inline-sources --output dist/css/style.min.css dist/css/style.css",
+    "css:prefix": "postcss --config build/postcss.config.js --replace \"dist/css/*.css\" \"!dist/css/*.min.css\"",
+    "lint": "npm-run-all --continue-on-error --parallel lint:css",
+    "lint:css": "npm-run-all lint:css-*",
+    "lint:css-vars": "fusv scss/",
+    "lint:css-styles": "stylelint scss/**/*.{css,scss}"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "^9.8.6",
+    "clean-css-cli": "^4.3.0",
+    "find-unused-sass-variables": "^2.0.0",
+    "node-sass": "^4.14.1",
+    "npm-run-all": "^4.1.5",
+    "postcss-cli": "^7.1.1",
+    "prettier": "^2.0.5",
+    "sass-loader": "^9.0.3",
+    "stylelint": "^13.6.1",
+    "stylelint-config-airbnb": "^0.0.0",
+    "stylelint-config-idiomatic-order": "^8.1.0",
+    "stylelint-config-prettier": "^8.0.1",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-scss": "^3.14.2"
+  }
+}
