@@ -1,0 +1,168 @@
+// STYLES
+
+// Filled button styles
+
+$ms-button-styles: (
+  display: inline-block,
+  border-style: solid,
+  appearance: button,
+  cursor: pointer,
+  text-align: center,
+  text-transform: uppercase,
+  transition: $ms-base-transition,
+  user-select: none,
+  vertical-align: top,
+  white-space: nowrap
+) !default;
+
+// Outline button styles
+
+$ms-button-outline-styles: () !default;
+
+// Link button styles
+
+$ms-button-link-styles: (
+  text-transform: none
+) !default;
+
+// SIZES
+
+// Filled button sizes
+
+$ms-button-size-default: (
+  min-width: $ms-unit * 12,
+  height: $ms-unit * 4,
+  padding-right: $ms-unit * 1.5,
+  padding-left: $ms-unit * 1.5,
+  border-width: 0,
+  border-radius: $ms-border-radius,
+  font-size: $ms-unit,
+  line-height: $ms-unit * 1.5,
+) !default;
+
+$ms-button-size-small: (
+  min-width: $ms-unit * 9,
+  height: $ms-unit * 2.5,
+  padding-right: $ms-unit * 0.75,
+  padding-left: $ms-unit * 0.75,
+  border-width: 0,
+  border-radius: $ms-border-radius-small,
+  font-size: $ms-unit * 0.875,
+  line-height: $ms-unit,
+) !default;
+
+$ms-button-size-large: (
+  min-width: $ms-unit * 15,
+  height: $ms-unit * 5.5,
+  padding-right: $ms-unit * 1.5,
+  padding-left: $ms-unit * 1.5,
+  border-width: 0,
+  border-radius: $ms-border-radius,
+  font-size: $ms-unit * 1.125,
+  line-height: $ms-unit * 3,
+) !default;
+
+$ms-button-sizes: (
+  "default": $ms-button-size-default,
+  "small":   $ms-button-size-small,
+  "large":   $ms-button-size-large,
+) !default;
+
+// Outline button sizes
+
+$ms-button-outline-allowed: true !default;
+
+$ms-button-outline-size-default: ( border-width: 2px ) !default;
+$ms-button-outline-size-small:   ( border-width: 2px ) !default;
+$ms-button-outline-size-large:   ( border-width: 2px ) !default;
+
+$ms-button-outline-sizes: (
+  "default": $ms-button-outline-size-default,
+  "small":   $ms-button-outline-size-small,
+  "large":   $ms-button-outline-size-large,
+) !default;
+
+// Link button sizes
+
+$ms-button-link-allowed: true !default;
+
+$ms-button-link-size-default: (
+  padding-left: 0,
+  padding-right: 0
+) !default;
+
+$ms-button-link-size-small: (
+  padding-left: 0,
+  padding-right: 0
+) !default;
+
+$ms-button-link-size-large: (
+  padding-left: 0,
+  padding-right: 0
+) !default;
+
+$ms-button-link-sizes: (
+  "default": $ms-button-link-size-default,
+  "small": $ms-button-link-size-small,
+  "large": $ms-button-link-size-large
+) !default;
+
+
+// VARIANTS
+
+// Filled button variants
+
+$ms-button-variant-primary: (
+  "default":  ( background-color: #4AB2B2, color: #fff ),
+  "hover":    ( background-color: #44A7A7 ),
+  "disabled": ( background-color: mix(#4AB2B2, #E3E8EE, 5%), color: rgba(#4AB2B2, 0.5) ),
+) !default;
+
+$ms-button-variant-secondary: (
+  "default":  ( background-color: #E7EBF0, color: #4AB2B2 ),
+  "hover":    ( background-color: #DEE6F0 ),
+  "disabled": ( background-color: mix(#E7EBF0, #E3E8EE, 50%), color: rgba(#4AB2B2, 0.5) ),
+) !default;
+
+$ms-button-variants: (
+  "primary": $ms-button-variant-primary,
+  "secondary": $ms-button-variant-secondary,
+) !default;
+
+// Outline button variants
+
+$ms-button-outline-variant-primary: (
+  "default": (border-color: #D6D6D6, color: #379292),
+  "hover": (),
+  "disabled": (),
+) !default;
+
+$ms-button-outline-variant-secondary: (
+  "default": (),
+  "hover": (),
+  "disabled": (),
+) !default;
+
+$ms-button-outline-variants: (
+  "primary": $ms-button-outline-variant-primary,
+  "secondary": $ms-button-outline-variant-secondary
+) !default;
+
+// Link button variants
+
+$ms-button-link-variant-primary: (
+  "default": (color: #4AB2B2),
+  "hover": (text-decoration: underline),
+  "disabled": (),
+) !default;
+
+$ms-button-link-variant-secondary: (
+  "default": (),
+  "hover": (),
+  "disabled": (),
+) !default;
+
+$ms-button-link-variants: (
+  "primary": $ms-button-link-variant-primary,
+  "secondary": $ms-button-link-variant-secondary
+) !default;

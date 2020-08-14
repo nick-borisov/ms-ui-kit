@@ -1,0 +1,33 @@
+// stylelint-disable indentation
+
+@function recursive-map-merge($source1, $source2 ) {
+  @if ( type-of($source1) == map or ( type-of($source1) == list and length($source1) == 0) ) and
+      ( type-of($source2) == map or ( type-of($source2) == list and length($source2) == 0) ) {
+
+    // Check both maps and convert to [map] when empty
+    $map1: convert-empty-list-to-map($source1);
+    $map2: convert-empty-list-to-map($source2);
+
+    $result: $map1;
+
+    @each $key, $value in $map2 {
+      // Check both childs and convert to map when empty
+      $map1-child: convert-empty-list-to-map(map-get($map1, $key));
+      $map2-child: convert-empty-list-to-map($value);
+
+      @if ( type-of($map1-child) == map and type-of($map2-child) == map ) {
+        $result: map-merge($result, ($key: recursive-map-merge($map1-child, $map2-child)));
+      }
+      @else {
+        $result: map-merge($result, ($key: $value));
+      }
+    }
+
+    @return $result;
+  }
+  @else {
+    // stylelint-disable-next-line
+    @warn "recursive-map-merge() expects it\'s parameters to be map types!";
+    @return null;
+  }
+}

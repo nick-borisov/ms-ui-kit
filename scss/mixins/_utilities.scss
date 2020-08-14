@@ -1,6 +1,6 @@
-// stylelint-disable
-
 // Utility generator
+// stylelint-disable order/order
+
 @mixin generate-utility($utility, $infix) {
   $values: map-get($utility, values);
 

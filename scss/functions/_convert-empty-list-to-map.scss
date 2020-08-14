@@ -1,0 +1,6 @@
+@function convert-empty-list-to-map($source) {
+  @if ( type-of($source) == list and length($source) == 0 ) {
+    @return map-remove((x:x), x);
+  }
+  @return $source;
+}

@@ -10,7 +10,6 @@
     "stylelint-scss"
   ],
   "rules" : {
-    "at-rule-blacklist": ["extend"],
     "at-rule-no-unknown": [
       true,
       {
@@ -28,9 +27,16 @@
     "declaration-colon-newline-after": "always-multi-line",
     "declaration-colon-space-after": "always-single-line",
     "declaration-empty-line-before": [
-      "never",
+      "always",
       {
-        "ignore": ["after-comment"]
+        "except": ["after-declaration"],
+        "ignore": ["first-nested", "inside-single-line-block"]
+      }
+    ],
+    "rule-empty-line-before": [
+      "always-multi-line",
+      {
+        "ignore": ["after-comment", "first-nested"]
       }
     ],
     "max-nesting-depth": [

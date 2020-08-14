@@ -1,0 +1,38 @@
+@function get-button-padding-y($height, $line-height, $border-width) {
+  $padding-y: ($height - $line-height) / 2;
+
+  @if $border-width == 0 {
+    @return $padding-y;
+  }
+
+  @if unit($padding-y) == unit($border-width) {
+    @return $padding-y - $border-width;
+  } @else {
+    @return calc(#{$padding-y} - #{$border-width});
+  }
+}
+
+@mixin set-button-size($styles, $config: ()) {
+  $height: map-get($config, height) or map-get($styles, height);
+  $line-height: map-get($config, line-height) or map-get($styles, line-height);
+  $border-width: map-get($config, border-width) or map-get($styles, border-width);
+  $padding-y: get-button-padding-y($height, $line-height, $border-width);
+
+  @include set-styles($styles);
+
+  padding-top: $padding-y;
+  padding-bottom: $padding-y;
+}
+
+@mixin set-button-variant($styles) {
+  @each $state, $state-styles in $styles {
+    @if $state == "default" {
+      @include set-styles($state-styles);
+    } @else {
+      &:#{$state},
+      &.is-#{$state} {
+        @include set-styles($state-styles);
+      }
+    }
+  }
+}

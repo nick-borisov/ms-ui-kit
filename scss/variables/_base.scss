@@ -1,0 +1,9 @@
+$ms-class-prefix: "ms-" !default;
+$ms-unit: 1rem !default;
+
+$ms-border-radius: $ms-unit * 0.5 !default;
+$ms-border-radius-small: $ms-unit * 0.25 !default;
+// $ms-border-radius-large: $ms-unit * 0.75 !default;
+
+$ms-base-transition-duration: 0.3s;
+$ms-base-transition: all $ms-base-transition-duration;

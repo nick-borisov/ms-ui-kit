@@ -22,12 +22,12 @@
 
   #{$class} {
     @include make-grid-gutter((margin-left, margin-right), -1);
+
     display: flex;
     flex: 1 0 100%;
     flex-wrap: wrap;
 
     @if $enable-small-grid {
-
       &--small {
         @include make-grid-gutter((margin-left, margin-right), -0.5);
       }
@@ -47,6 +47,7 @@
 
 @mixin make-col-offset($size, $columns: $grid-columns) {
   $num: $size / $columns;
+
   margin-left: if($num == 0, 0, percentage($num));
 }
 
@@ -56,12 +57,12 @@
 
   #{$class} {
     @include make-grid-gutter((padding-left, padding-right));
+
     width: 100%;
     max-width: 100%;
     flex-shrink: 0;
 
     @if $enable-small-grid {
-
       &--small {
         @include make-grid-gutter((padding-left, padding-right) ,0.5);
       }

@@ -1,0 +1,100 @@
+.#{$ms-class-prefix}button {
+  @include set-styles($ms-button-styles);
+
+  @if $ms-button-outline-allowed {
+    &--outline {
+      @include set-styles($ms-button-outline-styles);
+    }
+  }
+
+  @if $ms-button-link-allowed {
+    &--link {
+      @include set-styles($ms-button-link-styles);
+    }
+  }
+
+  // Define sizes
+  @each $size, $styles in $ms-button-sizes {
+
+    @if $size == "default" {
+      @include set-button-size($styles);
+    } @else {
+      &--#{$size} {
+        @include set-button-size($styles);
+      }
+    }
+
+    @if $ms-button-outline-allowed {
+      $outline-styles: map-get($ms-button-outline-sizes, $size) or map-remove((x: x), x);
+      $outline-config-styles: map-merge($styles, $outline-styles);
+
+      @if $size == "default" {
+        &--outline {
+          @include set-button-size($outline-styles, $outline-config-styles);
+        }
+      } @else {
+        &--#{$size}#{&}--outline {
+          @include set-button-size($outline-styles, $outline-config-styles);
+        }
+      }
+    }
+
+    @if $ms-button-link-allowed {
+      $link-styles: map-get($ms-button-link-sizes, $size) or map-remove((x: x), x);
+      $link-config-styles: map-merge($styles, $link-styles);
+
+      @if $size == "default" {
+        &--link {
+          @include set-button-size($link-styles, $link-config-styles);
+        }
+      } @else {
+        &--#{$size}#{&}--link {
+          @include set-button-size($link-styles, $link-config-styles);
+        }
+      }
+    }
+
+  }
+
+  &--fluid {
+    min-width: 0
+  }
+
+  &--block {
+    display: block;
+    width: 100%;
+    min-width: 0;
+  }
+  // /Define sizes
+
+  // Define variants
+  &:disabled,
+  &.is-disabled {
+    -webkit-appearance: none;
+    cursor: auto;
+    pointer-events: none;
+  }
+
+  @each $variant, $variant-styles in $ms-button-variants {
+    &--#{$variant}:not(#{&}--outline):not(#{&}--link) {
+      @include set-button-variant($variant-styles);
+    }
+  }
+
+  @if $ms-button-outline-allowed {
+    @each $variant, $variant-styles in $ms-button-outline-variants {
+      &--#{$variant}#{&}--outline {
+        @include set-button-variant($variant-styles);
+      }
+    }
+  }
+
+  @if $ms-button-link-allowed {
+    @each $variant, $variant-styles in $ms-button-link-variants {
+      &--#{$variant}#{&}--link {
+        @include set-button-variant($variant-styles);
+      }
+    }
+  }
+  // /Define variants
+}

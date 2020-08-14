@@ -11,13 +11,15 @@
   "scripts": {
     "build": "npm-run-all build:*",
     "build:css": "npm-run-all lint:css css:compile css:prefix css:minify",
-    "css:compile": "node-sass --output-style expanded --source-map true --source-map-contents true --precision 6 scss/ -o dist/css/",
-    "css:minify": "cleancss --level 1 --format breakWith=lf --source-map --source-map-inline-sources --output dist/css/style.min.css dist/css/style.css",
-    "css:prefix": "postcss --config build/postcss.config.js --replace \"dist/css/*.css\" \"!dist/css/*.min.css\"",
+    "watch": "npm-run-all watch:* lint:* --continue-on-error --parallel",
+    "watch:css": "node-sass scss/style.scss -wo dist",
     "lint": "npm-run-all --continue-on-error --parallel lint:css",
     "lint:css": "npm-run-all lint:css-*",
     "lint:css-vars": "fusv scss/",
-    "lint:css-styles": "stylelint scss/**/*.{css,scss}"
+    "lint:css-styles": "stylelint scss/**/*.{css,scss}",
+    "css:compile": "node-sass --output-style expanded --source-map true --source-map-contents true --precision 6 scss/ -o dist/css/",
+    "css:minify": "cleancss --level 1 --format breakWith=lf --source-map --source-map-inline-sources --output dist/css/style.min.css dist/css/style.css",
+    "css:prefix": "postcss --config build/postcss.config.js --replace \"dist/css/*.css\" \"!dist/css/*.min.css\""
   },
   "license": "MIT",
   "devDependencies": {
